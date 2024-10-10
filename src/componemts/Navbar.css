@@ -1,0 +1,101 @@
+/* General Navbar Styles */
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;         /* Allow wrapping for responsiveness */
+}
+
+/* Responsive ul */
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;         /* Allow nav items to wrap on small screens */
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;  /* Use the Roboto font */
+  font-size: 18px;                    /* Set the font size */
+  font-weight: 500;                   /* Font weight for better readability */
+  transition: color 0.3s ease;        /* Smooth transition for hover effect */
+}
+
+.navbar a:hover {
+  color: #ffcc00;                     /* Lighter hover color */
+}
+
+/* Button Styling */
+button {
+  border: 0;
+  padding: 10px 20px;
+  background-color: #1d4ed8;          /* Tailwind blue shade */
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2563eb;          /* Darker hover blue */
+  transform: scale(1.05);             /* Slight scaling effect on hover */
+}
+
+button:focus {
+  outline: none;                      /* Remove default focus border */
+}
+
+/* Responsive Navbar - Smaller Screens */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;         /* Stack elements vertically on smaller screens */
+      align-items: flex-start;        /* Align items to start on small screens */
+  }
+
+  .navbar ul {
+      flex-direction: column;         /* Stack nav links vertically */
+      width: 100%;
+  }
+
+  .navbar li {
+      margin-bottom: 10px;            /* Add margin between vertical links */
+  }
+
+  .navbar a {
+      font-size: 16px;                /* Adjust font size for smaller screens */
+  }
+
+  /* Adjust button */
+  button {
+      width: 100%;                    /* Make button full width on small screens */
+      padding: 12px;
+      text-align: center;
+  }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+  .navbar {
+      padding: 0.5rem;                /* Reduce padding on very small screens */
+  }
+
+  .navbar a {
+      font-size: 14px;                /* Smaller font size for mobile */
+  }
+
+  button {
+      font-size: 14px;
+  }
+}

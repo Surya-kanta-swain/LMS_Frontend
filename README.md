@@ -1,0 +1,3 @@
+# React + Vite
+
+First, after logging in, go to the profile page where it can fetch the ID of the user and then go to the calendar page. Then you can perform your operations...
