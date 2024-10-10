@@ -23,10 +23,8 @@ const Signin = ({togglePannel}) => {
 
    try {
     const res = await axios.post("http://localhost:8081/api/users/signin",formData)
-    console.log("sign in successfully")
-    console.log(formData);
     localStorage.setItem("id1",res.data.id)
-    console.log("signin data be ",res.data); 
+    
    if(!res.data){
       setError("Invalid Email or password");
    }
