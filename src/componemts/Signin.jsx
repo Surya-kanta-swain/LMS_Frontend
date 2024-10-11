@@ -19,8 +19,6 @@ const Signin = ({togglePannel}) => {
     }
     const handleSubmit= async(e)=>{
         e.preventDefault();
-
-
    try {
     const res = await axios.post("http://localhost:8081/api/users/signin",formData)
     localStorage.setItem("id1",res.data.id)

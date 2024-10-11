@@ -31,7 +31,7 @@ function LeaveForm() {
     const date1 = new Date(formData.startDate);
     const date2 = new Date(formData.endDate);
     const differenceInMilliseconds = date2 - date1;
-    const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24) + 1; // Include both start and end dates
+    const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24) + 1;
 
     // Validation checks
     const newErrors = {};

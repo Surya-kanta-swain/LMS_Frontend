@@ -41,8 +41,8 @@ const UserList= () => {
     }
   }
 
-  const rlb = localStorage.getItem("remainingBalance")
-  console.log("remainimg balance",rlb)
+   const rlb = localStorage.getItem("remainingBalance")
+   console.log("remainimg balance",rlb)
   
 
   return (

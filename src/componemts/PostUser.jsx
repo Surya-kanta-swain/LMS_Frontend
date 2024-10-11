@@ -12,15 +12,15 @@ const PostUser = () => {
     role: '',
     days: 50,
   });
-  const [errors, setErrors] = useState({}); // State for validation errors
+  const [errors, setErrors] = useState({}); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // Validate form data
+    
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors); // Set validation errors
+      setErrors(validationErrors); 
       return;
     }
     
