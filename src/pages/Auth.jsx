@@ -17,9 +17,8 @@ const Auth = () => {
     <div className='box lg:max-w-4xl'>
         {/* rotating image box */}
     <div className={`cover ${isRegister ? "rotate-active":""}`}>
-<div className='front'>
-    <img src={img3}/>
-
+           <div className='front'>
+              <img src={img3}/>
 </div>
 <div className='back'>
 <img src={img4}/>

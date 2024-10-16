@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import axios from 'axios';
-
 const navItems = [
   { name: "Home", path: "/", roles: ["manager", 'employee'] },
   { name: "Calendar", path: "/calendar", roles: ["employee"] },

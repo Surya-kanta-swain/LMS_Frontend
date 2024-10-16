@@ -15,6 +15,7 @@ const LeaveAcceptOrDecline = () => {
     const fetchLeaveHistory = async () => {
       try {
         const response = await axios.get('http://localhost:8081/api/leave/');
+        console.log("User data"+response.data);
         const authorizable = response.data.filter(el => 
           el.status === "PENDING" && 
           el.departmentName && 

@@ -22,7 +22,7 @@ function LeaveForm() {
     departmentName: da,
     leaveType: "",
   });
-
+   const[LeaveMsg,SetLeaveMsg]=useState("");
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
@@ -48,13 +48,15 @@ function LeaveForm() {
     if (differenceInDays <= bal) {
       try {
         const response = await axios.post('http://localhost:8081/api/leave/', formData);
-        alert(`Leave request sent. Your ID is: ${response.data.id}`);
+        // alert(`Leave request sent. Your ID is: ${response.data.id}`);
+        SetLeaveMsg("Request has be send successfully");
       } catch (error) {
         console.error("Error submitting leave request:", error);
         alert("There was an error submitting your leave request.");
       }
     } else {
-      alert("No holiday available.");
+      // alert("No holiday available.");
+      SetLeaveMsg("No Holidays Available");
     }
   };
 
@@ -70,6 +72,18 @@ function LeaveForm() {
   };
 
   return (
+<>
+
+{
+ LeaveMsg==="Request has be send successfully" &&(
+  <div className='p-4 text-center bg-green-500 text-white mt-4 rounded-lg'>{LeaveMsg}</div>
+ )
+}
+{
+ LeaveMsg==="No Holidays Available" &&(
+  <div className='p-4 text-center bg-red-500 text-white mt-4 rounded-lg'>{LeaveMsg}</div>
+ )
+}
     <form className='leave-form' onSubmit={handleSubmit}>
       <h1 className='form-header'>Leave Form</h1>
 
@@ -123,6 +137,7 @@ function LeaveForm() {
 
       <button type="submit" className='submit-button'>Submit Leave Request</button>
     </form>
+    </>
   );
 }
 

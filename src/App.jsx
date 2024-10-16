@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import Navbar from './componemts/Navbar'
 import Home from './pages/Home'
 import UpdateUser, {} from './componemts/UpdateUser'
 import PostUser, {} from './componemts/PostUser'
-import { Route, Router,RouterProvider ,createBrowserRouter } from 'react-router-dom';
+import {RouterProvider ,createBrowserRouter ,Navigate} from 'react-router-dom';
 import UserList from './componemts/AllUserList';
 import LeaveForm, {} from './componemts/LeaveForm'
 import LeaveHistory from './componemts/AllLeaveList';
@@ -14,7 +13,6 @@ import Auth, {} from './pages/Auth'
 import Profile from './componemts/Profile';
 import AccedpteLeave from './requests/AccedpteLeave';
 import RejectedLeave from './requests/RejectedLeave';
-import Calender from './componemts/Calender';
 import CalenderLeave from './componemts/CalenderLeave';
 import LeavePol from './pages/LeavePol';
 import EmpHandbook from './pages/EmpHandbook';
@@ -109,6 +107,7 @@ const App = () => {
     )}
     </>
   );
+
 };
 
 export default App;

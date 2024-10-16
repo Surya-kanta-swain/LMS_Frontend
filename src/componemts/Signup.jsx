@@ -14,7 +14,7 @@ const Signup = ({togglePannel}) => {
         password:"",
         department:"",
         role:"",
-        days: 0,
+        days: 30,
 
     })
     const handleChange=(e)=>{
@@ -23,6 +23,7 @@ const Signup = ({togglePannel}) => {
             [name]:value
      } )
     }
+  
     const handleSubmit= async (e)=>{
         e.preventDefault();
        const res = await axios.post("http://localhost:8081/api/users/",formData)

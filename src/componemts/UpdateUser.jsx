@@ -15,8 +15,10 @@ const navigate = useNavigate()
     role: '',
     days: 20,
   });
+  const [error,setError]=useState({});
   useEffect(()=>{
  const fetchUser = async ()=>{
+
   try {
     const response = await axios.get(`http://localhost:8081/api/users/${id}`)
     const data =response.data
@@ -29,9 +31,31 @@ const navigate = useNavigate()
  }
  fetchUser();
   },[id])
-
+ 
+  const validateform=(formdata)=>{
+    const errors={};
+    if(!formdata.email){
+      errors.email="email is required";
+    }
+    if(!formdata.password)errors.password="password is required";
+    if(!formdata.department)errors.department="department is required";
+     if(!formdata.role)errors.role="role is required";
+return errors;
+  }
   const handleSubmit = async (event) => {
+   
+   
     event.preventDefault();
+    // if(!formData.email||!formData.password){
+    //   alert("Please Enter Valid data")
+    //   return;
+    // }
+    const validateFormData=validateform(formData);
+    if(Object.keys(validateFormData).length>0){
+      setError(validateFormData);
+      return;
+    }
+
     try {
         const response = await axios.patch(`http://localhost:8081/api/users/${id}`,formData)
         alert(`user has been sent ${response.data.id}`)
@@ -47,6 +71,12 @@ const navigate = useNavigate()
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setError((prevErrors)=>({
+      ...prevErrors,
+      [name]:'',
+    }
+
+    ));
   };
 
   return (
@@ -65,7 +95,11 @@ const navigate = useNavigate()
           onChange={handleInputChange}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
+         {
+        error.email &&<p className='text-red-500'>{error.email}</p> 
+      }
       </div>
+     
       <div className="mb-4">
         <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
           Password:
@@ -78,7 +112,11 @@ const navigate = useNavigate()
           onChange={handleInputChange}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         />
+      {
+        error.password &&<p className='text-red-500'>{error.password}</p> 
+      }
       </div>
+     
       <div className="mb-4">
   <label htmlFor="department" className="block text-gray-700 text-sm font-bold mb-2">
     Department:
@@ -95,6 +133,9 @@ const navigate = useNavigate()
     <option value="IT">IT</option>
    
   </select>
+  {
+        error.department &&<p className='text-red-500'>{error.department}</p> 
+      }
 </div>
 
 <div className="mb-4">
@@ -112,6 +153,9 @@ const navigate = useNavigate()
     <option value="employee">Employee</option>
     <option value="manager">Manager</option>
   </select>
+  {
+        error.role &&<p className='text-red-500'>{error.role}</p> 
+      }
 </div>
 
       <div className="mb-4">

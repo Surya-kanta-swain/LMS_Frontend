@@ -16,7 +16,7 @@ const LeaveHistory = () => {
 const separateBtUserId =response.data.filter((item)=>item.uid == id1)
 
       setLeaveHistory(separateBtUserId);
-      console.log(response.data);
+      console.log("user info"+response.data);
     };
 
     fetchLeaveHistory();

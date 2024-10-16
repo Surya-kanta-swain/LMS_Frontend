@@ -15,7 +15,7 @@ const Profile = () => {
 
           setUserData(res.data);
           
-          console.log("data in navbar", res.data);
+         
         } catch (error) {
           console.error("Error fetching user data:", error);
         }

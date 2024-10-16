@@ -10,7 +10,13 @@ function UpdateLeave() {
     leaveCause: '',
     status:"PENDING"
   });
-
+  const bal = parseInt(localStorage.getItem("remainingBalance")) || 0;
+  // console.log(" Update Leave Remaining Balance from localStorage: ", localStorage.getItem("remainingBalance"));  // Debugging
+  // console.log(" Update Leave Parsed Remaining Balance (bal): ", bal);
+  const date1 = new Date(formData.startDate);
+  const date2 = new Date(formData.endDate);
+  const differenceInMilliseconds = date2 - date1;
+  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24) + 1;
   const [errors, setErrors] = useState({});
   const {id} = useParams();
   const navigate = useNavigate()
@@ -34,9 +40,13 @@ function UpdateLeave() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      if(differenceInDays<=bal){
         const response = await axios.patch(`http://localhost:8081/api/leave/${id}`,formData)
         alert(`leave has been sent.\n Your id is : ${response.data.id}`)
         console.log("leave user ",response);
+      }else{
+        alert ("No Holidays available")
+      }
     } catch (error) {
         console.log(error)
     }

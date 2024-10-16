@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const PostUser = () => {
-  const navigate = useNavigate();
+ 
   const [usercreate, setUserCreate] = useState("");
   const [formData, setFormData] = useState({
     email: '',
@@ -14,7 +14,8 @@ const PostUser = () => {
   });
   const [errors, setErrors] = useState({}); 
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => 
+    {
     event.preventDefault();
     
     
@@ -60,8 +61,13 @@ const PostUser = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: '' })); // Clear errors for the current field
+    setFormData((prevFormData) => ({
+       ...prevFormData,
+        [name]: value 
+      }));
+    setErrors((prevErrors) => ({ 
+      ...prevErrors,
+       [name]: '' })); // Clear errors for the current field
   };
 
   return (
